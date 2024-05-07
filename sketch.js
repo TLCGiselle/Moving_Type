@@ -11,6 +11,7 @@ let bgColor;
 let textColor;
 let textStroke;
 let startButton;
+let resetButton;
 let buttons = [];
 
 var words = ['Squishy Grip', 'SeaDog', 'Pochi','Hewie Rowan', 'Evanora','Habanero','Aurora'];
@@ -39,6 +40,14 @@ function setup() {
   startButton.size(200, 40);
   startButton.mousePressed(startSketch);
 
+  resetButton = createButton('Reset');
+  resetButton.position(800, 500);
+  resetButton.style('background-color', '#a83240');
+  resetButton.style('color', 'white');
+  resetButton.style('border', 'none');
+  resetButton.size(200, 40);
+  resetButton.mousePressed(resetSketch);
+
   buttons.push(
     createButton('Change Background').position(400, 500).style('background-color', 'white').size(150, 40).mousePressed(changeBackgroundColor),
     createButton('Change Text Color').position(200, 500).style('background-color', 'white').size(150, 40).mousePressed(changeTextColor),
@@ -56,6 +65,17 @@ function startSketch() {
     button.show();
   }
   startButton.hide();
+}
+
+function resetSketch() {
+  index = 0;
+  points = font.textToPoints(words[index], 0, 0, size, {
+    sampleFactor: 0.5,
+    simplifyThreshold: 0.0
+  });
+  bgColor = color(150, 25, 255);
+  textColor = color(255);
+  textStroke = color(255);
 }
 
 function draw() {
