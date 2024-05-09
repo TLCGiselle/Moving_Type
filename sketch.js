@@ -61,15 +61,18 @@ function setup() {
 
   for (let button of buttons) {
     button.hide();
+    resetButton.hide();
   }
 }
 
 function startSketch() {
   for (let button of buttons) {
     button.show();
+    resetButton.show();
   }
   startButton.hide();
   bgmusic.play();
+  
 }
 
 function resetSketch() {
@@ -77,11 +80,13 @@ function resetSketch() {
   points = font.textToPoints(words[index], 0, 0, size, {
     sampleFactor: 0.5,
     simplifyThreshold: 0.0
+  
   });
   bgColor = color(150, 25, 255);
   textColor = color(255);
   textStroke = color(255);
   bgmusic.stop();
+  
 }
 
 function draw() {
