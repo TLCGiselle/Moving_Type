@@ -17,7 +17,7 @@ let bgmusic;
 let yOffset = 0;
 let xOffest = 0;
 
-var words = ['Squishy Grip', 'SeaDog', 'Pochi','Hewie Rowan', 'Evanora','Habanero','Aurora'];
+var words = ['GM','Squishy Grip', 'SeaDog', 'Pochi','Hewie Rowan', 'Evanora','Habanero','Aurora'];
 var index = 0;
 
 function preload() {
@@ -68,11 +68,10 @@ function setup() {
 function startSketch() {
   for (let button of buttons) {
     button.show();
-    resetButton.show();
   }
   startButton.hide();
   bgmusic.play();
-  
+  resetButton.show();
 }
 
 function resetSketch() {
@@ -86,14 +85,15 @@ function resetSketch() {
   textColor = color(255);
   textStroke = color(255);
   bgmusic.stop();
+
   
 }
 
 function draw() {
   background(bgColor);
   stroke(textStroke);
-  let x = r * cos(angle) + xOffest;
-  let y = r * sin(angle) + yOffset;
+  let x = r * cos(angle) + mouseX;
+  let y = r * sin(angle) + mouseY;
   translate(20, 300);
   for (let i = 0; i < points.length; i++) {
     line(points[i].x, points[i].y, points[i].x + x, points[i].y + y);
@@ -101,7 +101,7 @@ function draw() {
   textFont(font);
   textSize(size);
   fill(textColor);
-  text(words[index], x, y );
+  text(words[index], 0, 0 );
 
   let increment = 3 * sin(t);
   t++;
