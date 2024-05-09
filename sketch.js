@@ -13,12 +13,14 @@ let textStroke;
 let startButton;
 let resetButton;
 let buttons = [];
+let bgmusic;
 
 var words = ['Squishy Grip', 'SeaDog', 'Pochi','Hewie Rowan', 'Evanora','Habanero','Aurora'];
 var index = 0;
 
 function preload() {
   font = loadFont("SquishyGrip-Regular.ttf");
+  bgmusic=loadSound('jellyfish jam (320 kbps).mp3')
 }
 
 function setup() {
@@ -65,6 +67,7 @@ function startSketch() {
     button.show();
   }
   startButton.hide();
+  bgmusic.play();
 }
 
 function resetSketch() {
@@ -76,6 +79,7 @@ function resetSketch() {
   bgColor = color(150, 25, 255);
   textColor = color(255);
   textStroke = color(255);
+  bgmusic.stop();
 }
 
 function draw() {
