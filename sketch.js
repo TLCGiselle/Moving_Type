@@ -14,6 +14,8 @@ let startButton;
 let resetButton;
 let buttons = [];
 let bgmusic;
+let yOffset = 0;
+let xOffest = 0;
 
 var words = ['Squishy Grip', 'SeaDog', 'Pochi','Hewie Rowan', 'Evanora','Habanero','Aurora'];
 var index = 0;
@@ -85,8 +87,8 @@ function resetSketch() {
 function draw() {
   background(bgColor);
   stroke(textStroke);
-  let x = r * cos(angle);
-  let y = r * sin(angle);
+  let x = r * cos(angle) + xOffest;
+  let y = r * sin(angle) + yOffset;
   translate(20, 300);
   for (let i = 0; i < points.length; i++) {
     line(points[i].x, points[i].y, points[i].x + x, points[i].y + y);
@@ -94,11 +96,12 @@ function draw() {
   textFont(font);
   textSize(size);
   fill(textColor);
-  text(words[index], x, y);
+  text(words[index], x, y );
 
   let increment = 3 * sin(t);
   t++;
   angle += increment;
+ 
 }
 
 function changeBackgroundColor() {
@@ -123,3 +126,14 @@ function changeWord() {
     simplifyThreshold: 0.0
   });
 }
+function keyPressed() {
+  if (key === 'w' || key === 'W') {
+    yOffset -= 10; // Move text up
+  } else if (key === 's' || key === 'S') {
+    yOffset += 10; // Move text down
+  
+  }
+}
+    
+  
+
